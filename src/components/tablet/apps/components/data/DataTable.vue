@@ -192,8 +192,6 @@ export default {
                 const key = this.filtered_key.toLowerCase()
                 const list = this.entries.filter(x => x.name.toLowerCase().includes(key))
 
-                console.log(list)
-
                 list.forEach(x => {
                     if (x.tag !== 'Error') amount += x.sum
                 })
@@ -212,8 +210,6 @@ export default {
             if (this.filtered_key) {
                 const key = this.filtered_key.toLowerCase()
                 const list = this.entries.filter(x => x.name.toLowerCase().includes(key))
-
-                console.log(list)
 
                 list.forEach(x => {
                     if (x.tag !== 'Error') amount = amount + 1
