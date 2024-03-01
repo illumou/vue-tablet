@@ -12,7 +12,7 @@
                 :class="[getColorClass(entrie.mode)]">
                     <div class="w-full h-full bg-background_color_child rounded-lg flex flex-col items-center justify-between py-24">
                         <div>
-                            <i v-if="entrie.mode === 'Sonne'" class="fa-regular fa-sun fa-2xl" style="color: #ffffff;"/>
+                            <i v-if="entrie.mode === 'Sonnig'" class="fa-regular fa-sun fa-2xl" style="color: #ffffff;"/>
                             <i v-if="entrie.mode === 'Wolkig'" class="fa-solid fa-cloud-sun fa-2xl" style="color: #ffffff;"/>
                             <i v-if="entrie.mode === 'Regen'" class="fa-solid fa-cloud-rain fa-2xl" style="color: #ffffff;"/>
                         </div>
@@ -35,11 +35,11 @@ export default {
     data() {
         return {
             data: [
-                {id: 1, mode: 'Sonne', temp: 20, date: 'Montag'},
-                {id: 2, mode: 'Sonne', temp: 15, date: 'Dienstag'},
+                {id: 1, mode: 'Sonnig', temp: 20, date: 'Montag'},
+                {id: 2, mode: 'Wolkig', temp: 15, date: 'Dienstag'},
                 {id: 3, mode: 'Regen', temp: 16, date: 'Mittwoch'},
-                {id: 4, mode: 'Sonne', temp: 24, date: 'Donnerstag'},
-                {id: 5, mode: 'Sonne', temp: 20, date: 'Freitag'},
+                {id: 4, mode: 'Sonnig', temp: 24, date: 'Donnerstag'},
+                {id: 5, mode: 'Wolkig', temp: 20, date: 'Freitag'},
                 {id: 6, mode: 'Regen', temp: 20, date: 'Samstag'},
                 {id: 7, mode: 'Regen', temp: 21, date: 'Sonntag'},
             ]
@@ -48,7 +48,7 @@ export default {
     methods: {
         getColorClass(mode) {
             switch (mode) {
-                case 'Sonne': {
+                case 'Sonnig': {
                     return 'bg-yellow-500'
                 }
                 case 'Wolkig': {
