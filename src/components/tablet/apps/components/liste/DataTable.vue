@@ -181,41 +181,24 @@ export default {
         displayList() {
             if (this.filtered_key) {
                 const keyword = this.filtered_key.toLowerCase()
-                this.filtered_entries = this.entries.filter(x => x.name.toLowerCase().includes(keyword))
                 return this.entries.filter(x => x.name.toLowerCase().includes(keyword))
             } else {
                 return this.entries;
             } 
         },
         soldAmount() {
-            if (this.filtered_entries.length > 0) {
-                let amount = 0;
-                this.filtered_entries.forEach(x => {
-                    if (x.tag !== 'Error') amount += x.sum
-                })
-                return amount
-            } else {
-                let amount = 0;
-                this.entries.forEach(x => {
-                    if (x.tag !== 'Error') amount += x.sum
-                })
-                return amount
-            }
+            let amount = 0;
+            this.entries.forEach(x => {
+                if (x.tag !== 'Error') amount += x.sum
+            })
+            return amount
         },
         countAmount() {
-            if (this.filtered_entries.length > 0) {
-                let amount = 0;
-                this.filtered_entries.forEach(x => {
-                    amount = amount + 1
-                })
-                return amount
-            } else {
-                let amount = 0;
-                this.entries.forEach(x => {
-                    amount = amount + 1
-                })
-                return amount
-            }
+            let amount = 0;
+            this.entries.forEach(x => {
+                amount = amount + 1
+            })
+            return amount
         }
     },
     beforeMount() {
