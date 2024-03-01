@@ -1,13 +1,24 @@
+name: VueJS Build
+
 on:
   push:
     branches:
       - main
+      - master
 
 jobs:
   test_build:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [19.x, 20.x, 21.x]
     steps:
-      - name: Install Dependencies
-        run: npm i
-      - name: Build
-        run: npm run build
+      - uses: actions/checkout@v3
+      - name: Use NodeJs ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: npm i
+        name: Install dependencies
+      - run: npm run build
+        name: Building frontend
