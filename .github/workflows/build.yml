@@ -21,4 +21,4 @@ jobs:
       - run: npm i
         name: Install dependencies
       - run: npm run build
-        name: Building frontend
+        name: Build project

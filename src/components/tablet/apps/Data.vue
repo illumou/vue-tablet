@@ -16,8 +16,8 @@
 </template>
 
 <script>
-import DataTable from './components/liste/DataTable.vue'
-import DialogWindow from './components/liste/DialogWindow.vue'
+import DataTable from './components/data/DataTable.vue'
+import DialogWindow from './components/data/DialogWindow.vue'
 
 export default {
     name: 'Liste',
