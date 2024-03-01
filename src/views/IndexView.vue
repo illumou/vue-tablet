@@ -64,10 +64,10 @@ export default {
     }
   },
   mounted() {
-    this.intervalID = setInterval(this.updateCurrentTime, 1000);
+    this.time_interval = setInterval(this.updateCurrentTime, 1000);
   },
   beforeUnmount() {
-    clearInterval(this.intervalID)
+    clearInterval(this.time_interval)
   }
 }
 </script>
