@@ -24,7 +24,7 @@
                     <td> {{ entrie.tag }}  </td>
                     <td class="select-none"> <i class="fa-solid fa-minus fa-xl cursor-pointer" style="color: #ffffff;" @click="removeEntrie(entrie.id)"/> </td>
                 </tr>
-                <tr class=" bg-background_color_child h-10">
+                <tr class=" bg-background_color_child h-10 border-t-2 border-border">
                     <td> Count: {{ countAmount }} </td>
                     <td></td>
                     <td></td>
@@ -166,7 +166,6 @@ export default {
             this.$emit('update:openDialog')
         },
         addValueToList(data) {
-
             const index = this.entrie_index ++
             this.entries.push({
                 id: index,
@@ -180,8 +179,8 @@ export default {
     computed: {
         displayList() {
             if (this.filtered_key) {
-                const keyword = this.filtered_key.toLowerCase()
-                return this.entries.filter(x => x.name.toLowerCase().includes(keyword))
+                const key = this.filtered_key.toLowerCase()
+                return this.entries.filter(x => x.name.toLowerCase().includes(key))
             } else {
                 return this.entries;
             } 
@@ -205,7 +204,7 @@ export default {
         this.entrie_index = this.entries.length
     },
     watch: {
-        newDataEntrie(newValue, oldValue) {
+        newDataEntrie(newValue) {
             this.addValueToList(newValue)
         },
     }
