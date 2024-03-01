@@ -2,7 +2,7 @@
     <div class="w-full h-full px-8 text-text_color overflow-auto flex flex-col">
         <div class="flex flex-row justify-between items-center">
             <h1 class="text-xl select-text font-bold"> Recent Orders </h1>
-            <input class=" bg-background_color_child border-border border-2 rounded-lg p-2" v-model='filterKey' placeholder="Name" type="text">
+            <input class=" bg-background_color_child border-border border-2 rounded-lg p-2" v-model='filtered_key' placeholder="Name" type="text">
         </div>
         <table class="w-full select-text">
             <thead class="sticky top-0 h-10  bg-background_color_child">
@@ -45,7 +45,8 @@ export default {
     },
     data() {
         return {
-            filterKey: '',
+            filtered_key: '',
+            filtered_entries: [],
             entrie_index: 0,
             entries: [
                 {   
@@ -178,26 +179,43 @@ export default {
     },
     computed: {
         displayList() {
-            if (this.filterKey) {
-                const keyword = this.filterKey.toLowerCase()
+            if (this.filtered_key) {
+                const keyword = this.filtered_key.toLowerCase()
+                this.filtered_entries = this.entries.filter(x => x.name.toLowerCase().includes(keyword))
                 return this.entries.filter(x => x.name.toLowerCase().includes(keyword))
             } else {
                 return this.entries;
             } 
         },
         soldAmount() {
-            let amount = 0;
-            this.entries.forEach(x => {
-                if (x.tag !== 'Error') amount += x.sum
-            })
-            return amount
+            if (this.filtered_entries.length > 0) {
+                let amount = 0;
+                this.filtered_entries.forEach(x => {
+                    if (x.tag !== 'Error') amount += x.sum
+                })
+                return amount
+            } else {
+                let amount = 0;
+                this.entries.forEach(x => {
+                    if (x.tag !== 'Error') amount += x.sum
+                })
+                return amount
+            }
         },
         countAmount() {
-            let amount = 0;
-            this.entries.forEach(x => {
-                amount = amount + 1
-            })
-            return amount
+            if (this.filtered_entries.length > 0) {
+                let amount = 0;
+                this.filtered_entries.forEach(x => {
+                    amount = amount + 1
+                })
+                return amount
+            } else {
+                let amount = 0;
+                this.entries.forEach(x => {
+                    amount = amount + 1
+                })
+                return amount
+            }
         }
     },
     beforeMount() {
@@ -206,7 +224,7 @@ export default {
     watch: {
         newDataEntrie(newValue, oldValue) {
             this.addValueToList(newValue)
-        }
+        },
     }
 }
 
