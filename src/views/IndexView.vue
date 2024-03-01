@@ -1,6 +1,6 @@
 <template>
   <div class="tablet-wrapper h-[40rem] w-full flex flex-col items-center justify-center select-none">
-    <div class="tablet-power-button relative w-[80rem] h-2 flex">
+    <div class="tablet-power-button relative w-[80rem] h-2">
       <div class="absolute tablet-button-off bg-red-600 w-16 h-full left-36 rounded-t-sm cursor-pointer"
       @click="toggleDisplaymode()">
       </div>
