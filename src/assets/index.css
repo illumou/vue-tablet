@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.ui_element_colors {
+    --background_main: 14, 14, 14, 1;
+    --background_child: 45, 45, 45, 1;
+    --text: 255, 255, 255, 1;
+    --text2: 230, 230, 230, 1;
+    --link: 55, 31, 118, 1;
+
+    background: rgba(var(--background_main))
+}
